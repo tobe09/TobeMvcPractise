@@ -16,7 +16,7 @@ namespace TobeMvcPractise
             routes.MapRoute(
                 "Testing", 
                 "TestRoute/{action}/{name}", 
-                new { controller = "TestRoute", action = "List", name = UrlParameter.Optional }
+                new { controller = "TestRoute", action = "Greeting", name = UrlParameter.Optional }
                 );
 
             routes.MapRoute(
