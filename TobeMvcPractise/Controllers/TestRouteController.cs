@@ -8,7 +8,7 @@ namespace TobeMvcPractise.Controllers
         public string Greeting(string name)
         {
             string str = @"Hello " + name + ".<br/><strong>From TestRoute</strong>";
-            
+
             //string pureHtmlString = Server.HtmlEncode(str);
 
             return str;

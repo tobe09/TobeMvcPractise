@@ -10,6 +10,14 @@ namespace TobeMvcPractise.ActionFilters
 {
     public class MyLogActionFilter : ActionFilterAttribute
     {
+        private string _callingClass { get; set; }
+
+        public MyLogActionFilter() : base() { }
+        public MyLogActionFilter(string caller)
+        {
+            _callingClass = caller;
+        }
+
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
             //base.OnActionExecuting(filterContext);
@@ -36,7 +44,7 @@ namespace TobeMvcPractise.ActionFilters
             var contrl = routeData.Values["controller"];
             var action = routeData.Values["action"];
 
-            string msg = "Event: " + eventName + ", Controller: " + contrl + ", Action: " + action;
+            string msg = "\r\nEvent= " + eventName + ", Controller= " + contrl + ", \r\nAction= " + action + ", Calling Class= " + _callingClass;
 
             Debug.WriteLine(msg, "MyActionFilter Log");
         }

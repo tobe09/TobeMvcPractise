@@ -11,7 +11,7 @@ namespace TobeMvcPractise.Controllers
      * Authorization filter >   Action filter   >   Result Filter   >   Exception Filter
      * Action Filters (Implements IActionFilterAttribute interface): OutputCache, HandleError, Authorize
      */
-    [MyLogActionFilter]      //attaches the filter to the whole class
+    [MyLogActionFilter("FilterController")]      //attaches the filter to the whole class
     public class FilterController : Controller
     {
         [OutputCache(Duration = 5)]
