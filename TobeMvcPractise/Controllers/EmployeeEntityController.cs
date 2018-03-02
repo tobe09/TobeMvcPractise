@@ -8,16 +8,40 @@ namespace TobeMvcPractise.Controllers
 {
     public class EmployeeEntityController : Controller
     {
-        private EmployeeEntityServices _employeeServices = new EmployeeEntityServices(new MyDbContext());
+        private EmployeeEntityServices _employeeServices;
+
+        public EmployeeEntityController() : base()
+        {
+            _employeeServices = new EmployeeEntityServices(new MyDbContext());
+        }
+
+        //for testing purposes
+        public EmployeeEntityController(EmployeeEntityServices service)
+        {
+            _employeeServices = service;
+        }
 
         // GET: EmployeeEntity
         //[OutputCache(CacheProfile = "Cache60Secs")]     //configurations set at web config (located at project root directory)
-        public ActionResult Index()
+        public ActionResult Index()      //async actionresults work
         {
-            return View(_employeeServices.GetAllEmployees());
+            var employees =_employeeServices.GetAllEmployees();
+            return View(employees);
         }
 
-        // GET: EmployeeEntity/Details/5
+        public async System.Threading.Tasks.Task<ActionResult> IndexAsync()      //async actionresults work
+        {
+            //return _employeeServices.GetAllEmployeesAsync().ContinueWith(t =>
+            //{
+            //    System.Collections.Generic.IEnumerable<Employee> emplys = t.Result;
+            //    return View(emplys) as ActionResult;      //cast must be appended for ContinueWith calls
+            //});
+
+            var emps = await _employeeServices.GetAllEmployeesAsync();
+            return View(emps);
+        }
+
+            // GET: EmployeeEntity/Details/5
         [OutputCache(Duration = 30, VaryByParam = "id")]
         public ActionResult Details(int? id)
         {
@@ -42,7 +66,7 @@ namespace TobeMvcPractise.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Name,JoiningDate,Age")] Employee employee)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid && employee != null)
             {
                 //int id = db.Employees.Count() == 0 ? 1 : db.Employees.Max(e => e.Id) + 1;
                 //employee.Id = id;             //not necessary, Id automatically updated by EF
@@ -71,7 +95,7 @@ namespace TobeMvcPractise.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Name,JoiningDate,Age")] Employee employee)
         {
-            if (!ModelState.IsValid)
+            if (!ModelState.IsValid && employee != null)
             {
                 //ModelState.AddModelError("", "One or more errors occured");   //not necessary
                 return View(employee);
@@ -138,6 +162,13 @@ namespace TobeMvcPractise.Controllers
             //System.Reflection.BindingFlags.NonPublic for private?
 
             int count = baseDefinition.Count();
-        }        
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing) _employeeServices.Dispose();
+
+            base.Dispose(disposing);
+        }
     }
 }

@@ -9,7 +9,7 @@ namespace TobeMvcPractise.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
             ContextKey = "TobeMvcPractise.Models.MyDbContext";
         }
 

@@ -9,9 +9,9 @@ namespace TobeMvcPractise.Models
 
         }
 
-        public DbSet<Employee> Employees { get; set; }
+        public virtual DbSet<Employee> Employees { get; set; }
 
-        public DbSet<Course> Courses { get; set; }
+        public virtual DbSet<Course> Courses { get; set; }
 
 
         private static MyDbContext _myDbContext;

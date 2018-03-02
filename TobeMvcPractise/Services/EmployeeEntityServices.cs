@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web.Mvc;
 using TobeMvcPractise.Models;
 
 namespace TobeMvcPractise.Services
 {
-    public class EmployeeEntityServices
+    public class EmployeeEntityServices : IDisposable
     {
         private MyDbContext _dbContext;
 
@@ -17,11 +18,19 @@ namespace TobeMvcPractise.Services
 
         public IEnumerable<Employee> GetAllEmployees()
         {
-            IEnumerable<Employee> employees = from emp in _dbContext.Employees
-                                              orderby emp.Id
-                                              select emp;
+            var employees = from emp in _dbContext.Employees
+                            orderby emp.Id
+                            select emp;
 
             return employees;
+        }
+
+        public Task<IEnumerable<Employee>> GetAllEmployeesAsync()
+        {
+            return Task.Factory.StartNew(() =>
+            {
+                return GetAllEmployees();
+            });
         }
 
         public Employee GetEmployee(int id)
@@ -100,6 +109,11 @@ namespace TobeMvcPractise.Services
             {
                 return false;
             }
+        }
+
+        public void Dispose()
+        {
+            _dbContext.Dispose();
         }
     }
 }
