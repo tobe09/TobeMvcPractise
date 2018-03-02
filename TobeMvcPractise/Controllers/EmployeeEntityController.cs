@@ -11,14 +11,17 @@ namespace TobeMvcPractise.Controllers
         private EmployeeEntityServices _employeeServices = new EmployeeEntityServices(new MyDbContext());
 
         // GET: EmployeeEntity
+<<<<<<< HEAD
         //[OutputCache(CacheProfile = "Cache60Secs")]     //configurations set at web config (located at project root directory)
+=======
+>>>>>>> parent of fa1138b... Update
         public ActionResult Index()
         {
             return View(_employeeServices.GetAllEmployees());
         }
 
         // GET: EmployeeEntity/Details/5
-        [OutputCache(Duration = 30, VaryByParam = "id")]
+        [OutputCache(Duration = 60, VaryByParam = "id")]
         public ActionResult Details(int? id)
         {
             if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -40,6 +43,7 @@ namespace TobeMvcPractise.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [OutputCache(CacheProfile = "Cache60Secs")]     //configurations needed from web config
         public ActionResult Create([Bind(Include = "Id,Name,JoiningDate,Age")] Employee employee)
         {
             if (ModelState.IsValid)
