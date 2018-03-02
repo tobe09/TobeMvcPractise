@@ -12,14 +12,17 @@ namespace TobeMvcPractise.Tests.Controllers
     public class FilterControllerTest
     {
         [TestMethod]
-        public void Index()
+        public void Filter_Index()
         {
+            //Arrange
             FilterController filterController = new FilterController();
 
-            string result = filterController.Index();
+            //Act
+            string result = filterController.Index();       //returns today's date
             string now = DateTime.Now.ToString();
 
-            Assert.AreEqual(now, result);
+            //Assert
+            Assert.AreEqual(result, now);
         }
     }
 }

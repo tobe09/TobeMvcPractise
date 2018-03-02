@@ -70,9 +70,10 @@ C:\Users\NeptuneDev1\Documents\Visual Studio 2013\Projects\Git\TobeMvcPractise\T
 C:\Users\NeptuneDev1\Documents\Visual Studio 2013\Projects\Git\TobeMvcPractise\TobeMvcPractise\bin\Microsoft.Owin.Security.Google.xml
 C:\Users\NeptuneDev1\Documents\Visual Studio 2013\Projects\Git\TobeMvcPractise\TobeMvcPractise\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\NeptuneDev1\Documents\Visual Studio 2013\Projects\Git\TobeMvcPractise\TobeMvcPractise\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-C:\Users\NeptuneDev1\Documents\Visual Studio 2013\Projects\Git\TobeMvcPractise\TobeMvcPractise\obj\Debug\TobeMvcPractise.csprojResolveAssemblyReference.cache
 C:\Users\NeptuneDev1\Documents\Visual Studio 2013\Projects\Git\TobeMvcPractise\TobeMvcPractise\obj\Debug\TobeMvcPractise.Migrations.InitialCreate.resources
 C:\Users\NeptuneDev1\Documents\Visual Studio 2013\Projects\Git\TobeMvcPractise\TobeMvcPractise\obj\Debug\TobeMvcPractise.Migrations.DataAnnotations.resources
 C:\Users\NeptuneDev1\Documents\Visual Studio 2013\Projects\Git\TobeMvcPractise\TobeMvcPractise\obj\Debug\TobeMvcPractise.csproj.GenerateResource.Cache
 C:\Users\NeptuneDev1\Documents\Visual Studio 2013\Projects\Git\TobeMvcPractise\TobeMvcPractise\obj\Debug\TobeMvcPractise.dll
 C:\Users\NeptuneDev1\Documents\Visual Studio 2013\Projects\Git\TobeMvcPractise\TobeMvcPractise\obj\Debug\TobeMvcPractise.pdb
+C:\Users\NeptuneDev1\Documents\Visual Studio 2013\Projects\Git\TobeMvcPractise\TobeMvcPractise\obj\Debug\TobeMvcPractise.csprojResolveAssemblyReference.cache
+C:\Users\NeptuneDev1\Documents\Visual Studio 2013\Projects\Git\TobeMvcPractise\TobeMvcPractise\obj\Debug\TobeMvcPractise.Migrations.MyDbContext.resources

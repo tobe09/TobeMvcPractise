@@ -43,3 +43,6 @@
 }
 
 </table>
+
+<br />
+@Html.ActionLink("Put Value", "Put", new { id = Model.Count() == 0 ? null : (int?)Model.FirstOrDefault().Id })

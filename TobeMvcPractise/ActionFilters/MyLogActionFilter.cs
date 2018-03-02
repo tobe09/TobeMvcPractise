@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
@@ -21,6 +22,7 @@ namespace TobeMvcPractise.ActionFilters
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
             //base.OnActionExecuting(filterContext);
+            //filterContext.Result determines the result sent by the action method
             Log("OnActionExecuting", filterContext.RouteData);
         }
 
@@ -37,6 +39,7 @@ namespace TobeMvcPractise.ActionFilters
         public override void OnResultExecuted(ResultExecutedContext filterContext)
         {
             Log("OnResultExecuted", filterContext.RouteData);
+            bool status = (HttpStatusCode)filterContext.HttpContext.Response.StatusCode == HttpStatusCode.NotFound;
         }
 
         private void Log(string eventName, RouteData routeData)

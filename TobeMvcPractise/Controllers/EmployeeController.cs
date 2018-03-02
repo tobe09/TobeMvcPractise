@@ -1,30 +1,39 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using TobeMvcPractise.Models;
+using TobeMvcPractise.Services;
 
 namespace TobeMvcPractise.Controllers
 {
     public class EmployeeController : Controller
     {
-        List<Employee> employees = Employee.Employees;
+        EmployeeServices employeeService = new EmployeeServices();
 
         // GET: Employee
         public ActionResult Index()
         {
-            IEnumerable<Employee> empls = from emp in employees
-                                              where emp.Age >= 18
-                                              orderby emp.Id
-                                              select emp;
+            IEnumerable<Employee> empls = employeeService.GetAllEmployees();
             return View(empls);
         }
 
         // GET: Employee/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(int? id)
         {
-            Employee emp = employees.Single(m => m.Id == id);
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            Employee emp = employeeService.GetEmployee((int)id);
+
+            if (emp == null)
+            {
+                return HttpNotFound();
+            }
 
             //try sending different content types eg json
             //return Content("{\"name\":\"Ade\",\"Age\":10}", "application/json");
@@ -45,13 +54,12 @@ namespace TobeMvcPractise.Controllers
             {
                 if (ModelState.IsValid)
                 {
+                    ////if collection object is being used
                     //string name = collection["Name"];
                     //string age = collection["Age"];
                     //string joiningDate = collection["JoiningDate"];
-                    int id = employees.Max(e => e.Id) + 1;
-                    newEmp.Id = id;
                     //Employee newEmp = new Employee { Id = id + 1, Name = name, Age = int.Parse(age), JoiningDate = DateTime.Parse(joiningDate) };
-                    employees.Add(newEmp);
+                    employeeService.AddEmployee(newEmp);
 
                     return RedirectToAction("Index");
                 }
@@ -66,9 +74,7 @@ namespace TobeMvcPractise.Controllers
         // GET: Employee/Edit/5
         public ActionResult Edit(int id)
         {
-            Employee emp = (from e in employees
-                            where e.Id == id
-                            select e).First();
+            Employee emp = employeeService.GetEmployee(id);
 
             return View(emp);
         }
@@ -79,10 +85,11 @@ namespace TobeMvcPractise.Controllers
         {
             try
             {
-                Employee emp = (from e in employees
-                                where e.Id == id
-                                select e).First();
-                if (TryUpdateModel(emp))        //updating from collection, can work with model object
+                //Employee emp = (from e in employees
+                //                where e.Id == id
+                //                select e).First();
+                //if (TryUpdateModel(emp))        //updating from collection, can work with model object
+                if(employeeService.UpdateEmployee(id,collection))
                 {
                     //emp.Name = collection["Name"];
                     //emp.Age = int.Parse(collection["Age"]);
@@ -90,7 +97,7 @@ namespace TobeMvcPractise.Controllers
 
                     return RedirectToAction("Index");
                 }
-                return View(emp);
+                return View(employeeService.GetEmployee(id));
             }
             catch
             {
@@ -101,9 +108,7 @@ namespace TobeMvcPractise.Controllers
         // GET: Employee/Delete/5
         public ActionResult Delete(int id)
         {
-            Employee emp = (from e in employees
-                            where e.Id == id
-                            select e).First();
+            Employee emp = employeeService.GetEmployee(id);
 
             return View(emp);
         }
@@ -114,10 +119,8 @@ namespace TobeMvcPractise.Controllers
         {
             try
             {
-                Employee emp = (from e in employees
-                                where e.Id == id
-                                select e).First();
-                employees.Remove(emp);
+                string token = collection["__RequestVerificationToken"];
+                employeeService.RemoveEmployee(id);
 
                 return RedirectToAction("Index");
             }

@@ -5,15 +5,15 @@ namespace TobeMvcPractise.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<TobeMvcPractise.Models.EmpDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<TobeMvcPractise.Models.MyDbContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "TobeMvcPractise.Models.EmpDbContext";
+            ContextKey = "TobeMvcPractise.Models.MyDbContext";
         }
 
-        protected override void Seed(TobeMvcPractise.Models.EmpDbContext context)
+        protected override void Seed(TobeMvcPractise.Models.MyDbContext context)
         {
             //  This method will be called after migrating to the latest version.
 

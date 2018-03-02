@@ -13,15 +13,14 @@ namespace TobeMvcPractise.Tests.Controllers
     public class TestRouteControllerTest
     {
         [TestMethod]
-        public void Greeting()
+        public void TestRoute_Greeting()
         {
             TestRouteController cntrl = new TestRouteController();
 
             string name = "name";
-            ContentResult greet = new ContentResult();
-            greet.Content = cntrl.Greeting(name);
+            string greeting = cntrl.Greeting(name);
 
-            Assert.AreEqual(typeof(string), greet.Content.GetType());
+            Assert.AreEqual(typeof(string), greeting.GetType());
         }
     }
 }
