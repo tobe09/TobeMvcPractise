@@ -20,7 +20,7 @@ namespace TobeMvcPractise.Tests.Controllers
         }
 
         [TestMethod]
-        public void Employee_Details_With_Null_Id()
+        public void Employee_Details_WithNull()
         {
             var controller = new EmployeeController();
 
@@ -30,7 +30,7 @@ namespace TobeMvcPractise.Tests.Controllers
         }
 
         [TestMethod]
-        public void Employee_Details_With_Wrong_Id()
+        public void Employee_Details_WithUnavailableId()
         {
             var controller = new EmployeeController();
 
@@ -40,7 +40,7 @@ namespace TobeMvcPractise.Tests.Controllers
         }
 
         [TestMethod]
-        public void Employee_Details_With_Correct_Id()
+        public void Employee_Details_WithAvailableId()
         {
             var controller = new EmployeeController();
 

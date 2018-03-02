@@ -34,7 +34,7 @@ namespace TobeMvcPractise.Attributes
         public override bool IsValid(object value)
         {
             DateTime val = (DateTime)value;
-            return val >= _minDate && val <= _maxDate;
+            return val > _minDate && val < _maxDate;
         }
     }
 }

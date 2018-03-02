@@ -31,7 +31,7 @@ namespace TobeMvcPractise.Models
         [Range(18, 60)]
         public int Age { get; set; }
         
-        public virtual ICollection<Course> Courses { get; set; }        //list of courses for which this employee is the foreign key
+        public virtual IEnumerable<Course> Courses { get; set; }        //list of courses for which this employee is the foreign key
 
 
         //private backing singleton instance in memory for in-memory employee class
