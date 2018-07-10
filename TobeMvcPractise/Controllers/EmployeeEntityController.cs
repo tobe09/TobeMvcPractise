@@ -3,21 +3,46 @@ using System.Net;
 using System.Web.Mvc;
 using TobeMvcPractise.Models;
 using TobeMvcPractise.Services;
+//using Newtonsoft.Json.Linq;
 
 namespace TobeMvcPractise.Controllers
 {
     public class EmployeeEntityController : Controller
     {
-        private EmployeeEntityServices _employeeServices = new EmployeeEntityServices(new MyDbContext());
+        private EmployeeEntityServices _employeeServices;
+
+        public EmployeeEntityController() : base()
+        {
+            _employeeServices = new EmployeeEntityServices(new MyDbContext());
+        }
+
+        //for testing purposes
+        public EmployeeEntityController(EmployeeEntityServices service)
+        {
+            _employeeServices = service;
+        }
 
         // GET: EmployeeEntity
         //[OutputCache(CacheProfile = "Cache60Secs")]     //configurations set at web config (located at project root directory)
-        public ActionResult Index()
+        public ActionResult Index()      //async actionresults work
         {
-            return View(_employeeServices.GetAllEmployees());
+            var employees =_employeeServices.GetAllEmployees();
+            return View(employees);
         }
 
-        // GET: EmployeeEntity/Details/5
+        public async System.Threading.Tasks.Task<ActionResult> IndexAsync()      //async actionresults work
+        {
+            //return _employeeServices.GetAllEmployeesAsync().ContinueWith(t =>
+            //{
+            //    System.Collections.Generic.IEnumerable<Employee> emplys = t.Result;
+            //    return View(emplys) as ActionResult;      //cast must be appended for ContinueWith calls
+            //});
+
+            var emps = await _employeeServices.GetAllEmployeesAsync();
+            return View(emps);
+        }
+
+            // GET: EmployeeEntity/Details/5
         [OutputCache(Duration = 30, VaryByParam = "id")]
         public ActionResult Details(int? id)
         {
@@ -42,7 +67,7 @@ namespace TobeMvcPractise.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Name,JoiningDate,Age")] Employee employee)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid && employee != null)
             {
                 //int id = db.Employees.Count() == 0 ? 1 : db.Employees.Max(e => e.Id) + 1;
                 //employee.Id = id;             //not necessary, Id automatically updated by EF
@@ -71,7 +96,7 @@ namespace TobeMvcPractise.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Name,JoiningDate,Age")] Employee employee)
         {
-            if (!ModelState.IsValid)
+            if (!ModelState.IsValid || employee == null)
             {
                 //ModelState.AddModelError("", "One or more errors occured");   //not necessary
                 return View(employee);
@@ -105,12 +130,43 @@ namespace TobeMvcPractise.Controllers
             _employeeServices.RemoveEmployee(id);
             return RedirectToAction("Index");
         }
-
-        public ActionResult Put(int? id)
+        
+        public ActionResult Put(int? id)        //Get Action by default
         {
-            if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            Employee emp = _employeeServices.GetEmployee((int)id);
 
-            return RedirectToAction("Details", new { id = id });
+            Employee empNew = new Employee();
+            empNew.Id = emp.Id;
+            empNew.Name = emp.Name;
+            empNew.Age = emp.Age;
+            empNew.JoiningDate = emp.JoiningDate;
+
+            return Json(empNew, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult GetAllNames(int testId)
+        {
+            var employees = _employeeServices.GetAllEmployees();
+            var employeeNames = new System.Collections.Generic.List<string>();
+            
+            foreach(Employee emp in employees)
+            {
+                employeeNames.Add(emp.Name);
+            }
+
+            return Json(employeeNames, JsonRequestBehavior.AllowGet);
+        }
+
+        public class Test
+        {
+            public string name { get; set; }
+        }
+
+        [HttpPost]
+        public ActionResult PostValueAllNames(Test test, int value)
+        {
+            //return RedirectToAction("GetAllNames", new { testId = value });       //also correct
+            return GetAllNames(value);
         }
 
         private void Reflection()
@@ -138,6 +194,13 @@ namespace TobeMvcPractise.Controllers
             //System.Reflection.BindingFlags.NonPublic for private?
 
             int count = baseDefinition.Count();
-        }        
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing) _employeeServices.Dispose();
+
+            base.Dispose(disposing);
+        }
     }
 }

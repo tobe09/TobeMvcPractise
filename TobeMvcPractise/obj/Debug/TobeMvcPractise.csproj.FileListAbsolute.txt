@@ -43,6 +43,8 @@ C:\Users\NeptuneDev1\Documents\Visual Studio 2013\Projects\Git\TobeMvcPractise\T
 C:\Users\NeptuneDev1\Documents\Visual Studio 2013\Projects\Git\TobeMvcPractise\TobeMvcPractise\bin\System.Web.WebPages.dll
 C:\Users\NeptuneDev1\Documents\Visual Studio 2013\Projects\Git\TobeMvcPractise\TobeMvcPractise\bin\System.Web.WebPages.Razor.dll
 C:\Users\NeptuneDev1\Documents\Visual Studio 2013\Projects\Git\TobeMvcPractise\TobeMvcPractise\bin\WebGrease.dll
+C:\Users\NeptuneDev1\Documents\Visual Studio 2013\Projects\Git\TobeMvcPractise\TobeMvcPractise\bin\EntityFramework.xml
+C:\Users\NeptuneDev1\Documents\Visual Studio 2013\Projects\Git\TobeMvcPractise\TobeMvcPractise\bin\EntityFramework.SqlServer.xml
 C:\Users\NeptuneDev1\Documents\Visual Studio 2013\Projects\Git\TobeMvcPractise\TobeMvcPractise\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 C:\Users\NeptuneDev1\Documents\Visual Studio 2013\Projects\Git\TobeMvcPractise\TobeMvcPractise\bin\System.Net.Http.Formatting.xml
 C:\Users\NeptuneDev1\Documents\Visual Studio 2013\Projects\Git\TobeMvcPractise\TobeMvcPractise\bin\System.Web.Http.xml
@@ -56,8 +58,6 @@ C:\Users\NeptuneDev1\Documents\Visual Studio 2013\Projects\Git\TobeMvcPractise\T
 C:\Users\NeptuneDev1\Documents\Visual Studio 2013\Projects\Git\TobeMvcPractise\TobeMvcPractise\bin\System.Web.WebPages.Razor.xml
 C:\Users\NeptuneDev1\Documents\Visual Studio 2013\Projects\Git\TobeMvcPractise\TobeMvcPractise\bin\Antlr3.Runtime.pdb
 C:\Users\NeptuneDev1\Documents\Visual Studio 2013\Projects\Git\TobeMvcPractise\TobeMvcPractise\bin\Newtonsoft.Json.xml
-C:\Users\NeptuneDev1\Documents\Visual Studio 2013\Projects\Git\TobeMvcPractise\TobeMvcPractise\bin\EntityFramework.xml
-C:\Users\NeptuneDev1\Documents\Visual Studio 2013\Projects\Git\TobeMvcPractise\TobeMvcPractise\bin\EntityFramework.SqlServer.xml
 C:\Users\NeptuneDev1\Documents\Visual Studio 2013\Projects\Git\TobeMvcPractise\TobeMvcPractise\bin\Microsoft.AspNet.Identity.Core.xml
 C:\Users\NeptuneDev1\Documents\Visual Studio 2013\Projects\Git\TobeMvcPractise\TobeMvcPractise\bin\Microsoft.AspNet.Identity.Owin.xml
 C:\Users\NeptuneDev1\Documents\Visual Studio 2013\Projects\Git\TobeMvcPractise\TobeMvcPractise\bin\Microsoft.AspNet.Identity.EntityFramework.xml
@@ -70,10 +70,8 @@ C:\Users\NeptuneDev1\Documents\Visual Studio 2013\Projects\Git\TobeMvcPractise\T
 C:\Users\NeptuneDev1\Documents\Visual Studio 2013\Projects\Git\TobeMvcPractise\TobeMvcPractise\bin\Microsoft.Owin.Security.Google.xml
 C:\Users\NeptuneDev1\Documents\Visual Studio 2013\Projects\Git\TobeMvcPractise\TobeMvcPractise\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\NeptuneDev1\Documents\Visual Studio 2013\Projects\Git\TobeMvcPractise\TobeMvcPractise\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-C:\Users\NeptuneDev1\Documents\Visual Studio 2013\Projects\Git\TobeMvcPractise\TobeMvcPractise\obj\Debug\TobeMvcPractise.Migrations.InitialCreate.resources
-C:\Users\NeptuneDev1\Documents\Visual Studio 2013\Projects\Git\TobeMvcPractise\TobeMvcPractise\obj\Debug\TobeMvcPractise.Migrations.DataAnnotations.resources
+C:\Users\NeptuneDev1\Documents\Visual Studio 2013\Projects\Git\TobeMvcPractise\TobeMvcPractise\obj\Debug\TobeMvcPractise.csprojResolveAssemblyReference.cache
+C:\Users\NeptuneDev1\Documents\Visual Studio 2013\Projects\Git\TobeMvcPractise\TobeMvcPractise\obj\Debug\TobeMvcPractise.Migrations.MyDbContext.resources
 C:\Users\NeptuneDev1\Documents\Visual Studio 2013\Projects\Git\TobeMvcPractise\TobeMvcPractise\obj\Debug\TobeMvcPractise.csproj.GenerateResource.Cache
 C:\Users\NeptuneDev1\Documents\Visual Studio 2013\Projects\Git\TobeMvcPractise\TobeMvcPractise\obj\Debug\TobeMvcPractise.dll
 C:\Users\NeptuneDev1\Documents\Visual Studio 2013\Projects\Git\TobeMvcPractise\TobeMvcPractise\obj\Debug\TobeMvcPractise.pdb
-C:\Users\NeptuneDev1\Documents\Visual Studio 2013\Projects\Git\TobeMvcPractise\TobeMvcPractise\obj\Debug\TobeMvcPractise.csprojResolveAssemblyReference.cache
-C:\Users\NeptuneDev1\Documents\Visual Studio 2013\Projects\Git\TobeMvcPractise\TobeMvcPractise\obj\Debug\TobeMvcPractise.Migrations.MyDbContext.resources

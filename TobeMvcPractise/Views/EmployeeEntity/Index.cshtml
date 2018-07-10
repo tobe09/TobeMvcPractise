@@ -23,7 +23,8 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
+@foreach (var item in Model)
+{
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.Name)
@@ -35,9 +36,9 @@
             @Html.DisplayFor(modelItem => item.Age)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
         </td>
     </tr>
 }
@@ -45,4 +46,97 @@
 </table>
 
 <br />
+<p>
+    <button type="submit" id="getAllNamesBtn">Get All Names</button>
+    <br />
+    <span id="allNamesSpan"></span>
+</p>
+
 @Html.ActionLink("Put Value", "Put", new { id = Model.Count() == 0 ? null : (int?)Model.FirstOrDefault().Id })
+@section Scripts{
+    <script>
+        $(function () {
+            debugger;
+        });
+
+        const btn = document.getElementById('getAllNamesBtn');
+        btn.onclick = function (e) {
+            debugger
+            //$.ajax({
+            //    type: "GET",
+            //    url: "/EmployeeEntity/GetAllNames?testId=3",
+            //    success: function (names) {
+            //        debugger
+            //        $('#allNamesSpan').html(createSelectList('namesList', names));
+            //    },
+            //    error: function (err) {
+            //        debugger
+            //        console.log(err);
+            //    }
+            //});
+            
+        //    postData('/EmployeeEntity/PostValueAllNames?value=3', { name: 5 }).then(names=> {
+        //        debugger
+        //        $('#allNamesSpan').html(createSelectList('namesList', names));
+        //    }).catch(err=> {
+        //        debugger
+        //    })
+
+        //    function postData(url, data) {
+        //        debugger;
+        //        // Default options are marked with *
+        //        return fetch(url, {
+        //            body: JSON.stringify(data), // must match 'Content-Type' header
+        //            cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+        //            credentials: 'same-origin', // include, *omit
+        //            headers: {
+        //                //'user-agent': 'Mozilla/4.0 MDN Example',
+        //                'content-type': 'application/json'
+        //            },
+        //            method: 'POST', // *GET, PUT, DELETE, etc.
+        //            //mode: 'cors', // no-cors, *same-origin
+        //            //redirect: 'follow', // *manual, error
+        //            //referrer: 'no-referrer', // *client
+        //        })
+        //        .then(response => {
+        //            debugger;
+        //            return response.json(); // parses response to JSON
+        //        })
+        //    }
+
+            let request = new XMLHttpRequest();
+            request.onreadystatechange = function (msg) {
+                if (this.readyState == XMLHttpRequest.DONE && this.status == 200) {
+                    // Action to be performed when the document is read;
+                    const selectList = createSelectList('namesList', JSON.parse(request.responseText));
+                    $('#allNamesSpan').html(selectList);
+                }
+            };
+            request.open("POST", "/EmployeeEntity/PostValueAllNames?value=3", true);
+            request.setRequestHeader("Content-type", "application/json");
+            request.send(JSON.stringify({ name: "Jane" }));
+            return;
+        };
+
+        function createSelectList(listId, texts, values) {
+            var selectList;
+
+            //to set values as text if no corresponding value array is supplied
+            if (values == null) {
+                values = texts;
+            }
+
+            selectList = "<select id='" + listId + "' class='dropdown addDropdown dropdown-header textDark'>";
+
+            //generate options for each item
+            for (var i = 0; i < texts.length; i++) {
+                selectList += "<option value='" + values[i] + "'>" + texts[i] + "</option>";
+            }
+
+            selectList += "</select>";
+
+            return selectList;
+        };
+    </script>
+}
+}

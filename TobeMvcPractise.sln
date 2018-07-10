@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TobeMvcPractise", "TobeMvcP
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TobeMvcPractise.Tests", "TobeMvcPractise.Tests\TobeMvcPractise.Tests.csproj", "{17077BB5-B47B-4AEF-BEF3-235FF35F66B6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModelFirstPractise", "ModelFirstPractise\ModelFirstPractise.csproj", "{4C7C98AB-68E2-4E9A-83ED-7B684950E2DD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModelFirstPractise.Model", "ModelFirstPractise.Model\ModelFirstPractise.Model.csproj", "{2A326FD3-A531-454B-B776-DBF5CB0FB1F5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{17077BB5-B47B-4AEF-BEF3-235FF35F66B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{17077BB5-B47B-4AEF-BEF3-235FF35F66B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{17077BB5-B47B-4AEF-BEF3-235FF35F66B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C7C98AB-68E2-4E9A-83ED-7B684950E2DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C7C98AB-68E2-4E9A-83ED-7B684950E2DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C7C98AB-68E2-4E9A-83ED-7B684950E2DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C7C98AB-68E2-4E9A-83ED-7B684950E2DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A326FD3-A531-454B-B776-DBF5CB0FB1F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A326FD3-A531-454B-B776-DBF5CB0FB1F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A326FD3-A531-454B-B776-DBF5CB0FB1F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A326FD3-A531-454B-B776-DBF5CB0FB1F5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
